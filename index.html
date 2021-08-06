@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="shortcut icon" href="data:image/png; base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABmJLR0QA/wD/AP+gvaeTAAACR0lEQVR4nO3dT04UQRxH8acmsGCiF4ATALfQhWv0BHoeogb0JGriv0voCVzKzmEJwUVjYoymZ/BX/arH7yepbU1Rb6boVTVERES0cwg8B74A58BV5+P8eq3PgIMG+zGZbeAlcIm/qTcdl8ApsFW8N81tA5/wN7BqfGRmEV7hb1r1OCndoYYOmfex87dxAewX7hMAt6snBJ42mtd2B3hSPWmLjbrfYM5ePKie8Fb1hMASWDSYtwdL4G7lhC0CXDWYsyele7aJZ/WsJIAsATbQ2PP0N+AI2LEW+Ac7DGs6Y3z93Rv7A468pY16zH8QoKdv/u8WTBzAeAxt8ZmVJl1//gnLEkCWALIEkCWALAFkCSBLAFkCyBJAlgCyBJAlgCwBZAkgSwBZAsgSQJYAsgSQJYAsAWQJIEsAWQLIEkCWALIEkCWALAFkCSBLAFkCyBJAlgCyBJAlgCwBZAkgSwBZAsgSQJYAsgSQJYAsAWQJIEsAWQLIjAC9X1k2KSPAQ+EzV9Xz2lY2dundGfCIvu6XXjDcmDj5tZW5O3p9ubRvkySALAFkCSBLAFkCyBJANocAr4FdhufvdcYe8FZYr676BWq7/7CWvQbrKTWHX0Csqfob94ab/Qp+HkFd/wLyIrf1fAfuVU7Y4gj62mDOXpT/bS0CvG8wZy/e2QtYxQHDq1+rz157NHmdbSun+BtWPV6U7lBjWwyvAbc3rWp8YGavNIdhwSfM+zi6YPjmz27zf7UPHAOfGR5R7U0dG8vrtR4zozM/IiLm5wev4Z9Lbehj4wAAAABJRU5ErkJggg==" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+		<title>Phone Built in HTML, CSS & JS</title>
+	</head>
+	<body onselectstart='return false'>
+		<div class='phone'>
+            <div class='camera'></div>
+            <div class="ear-speaker"></div>
+            <div class='screen'></div>
+            <h2 class='time'></h2>
+            <div class='power'></div>
+        </div>
+	</body>
+</html>
+<style>
+html{
+    cursor: default;
+}
+
+.phone{
+    background-color: brown;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 430px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.screen{
+    width: 220px;
+    height: 360px;
+    border: 1px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -54%);
+    border-radius: 10px;
+    transition: all .25s linear;
+}
+
+.power{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: blue;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.camera{
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    border: 5px solid black;
+    border-radius: 50%;
+    top: 10px;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    background-color: darkcyan;
+}
+
+.ear-speaker{
+    position: absolute;
+    width: 50px;
+    height: 6px;
+    background-color: chocolate;
+    border: 1px solid black;
+    border-radius: 5px;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.time{
+    color: navy;
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+</style>
+<script>
+document.querySelector('.screen').style.backgroundColor="black";
+document.querySelector('.time').style.display="none";
+
+document.querySelector('.power').onclick=function (){
+    if (document.querySelector('.screen').style.backgroundColor=='black'){
+        document.querySelector('.screen').style.backgroundColor='lightblue';
+        document.querySelector('.time').style.display='block';
+    }
+    else{
+        document.querySelector('.screen').style.backgroundColor="black";
+        document.querySelector('.time').style.display='none';
+    }
+};
+
+function clock(){
+    var time=new Date();
+    document.querySelector('.time').innerHTML = time.getHours()+" : "+time.getMinutes()+" : "+time.getSeconds();
+    setTimeout(clock, 100)
+}
+clock()
+
+</script>
